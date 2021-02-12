@@ -65,6 +65,16 @@ More info about the `Common Name` field
 
 > In the case of a single-name certificate, the common name consists of a single host name (e.g. example.com, www.example.com), or a wildcard name in case of a wildcard certificate (e.g. *.example.com).
 
+Sample CN validation from curl -v:
+
+```
+* Server certificate:
+*  subject: C=BR; ST=SP; L=Sao Paulo; O=some-company; OU=some-company-evil-section; CN=some.company.wow; emailAddress=iam@somecompany.com
+*  start date: Jan 13 19:25:45 2021 GMT
+*  expire date: Jan 13 19:25:45 2022 GMT
+*  common name: some.company.wow (matched)
+*  issuer: C=BR; ST=SP; L=Sao Paulo; O=some-company; OU=some-company-evil-section; CN=some.company.wow;
+```
 
 ### SAN - Subject Alternative Name
 
@@ -77,6 +87,18 @@ More info about the `Common Name` field
 > The ability to directly specify the content of a certificate SAN depends on the Certificate Authority and the specific product. Most certificate authorities have historically marketed multi-domain SSL certificates as a separate product. They’re generally charged at a higher rate than a standard single-name certificate.
 
 > On the technical side, the SAN extension was introduced to integrate the common name. Since HTTPS was first introduced in 2000 (and defined by the RFC 2818), the use of the commonName field has been considered deprecated, because it’s ambiguous and untyped.
+
+Sample SAN validation from curl -v:
+
+```
+* Server certificate:
+*  subject: CN=viacep.com.br
+*  start date: Mar 24 00:00:00 2020 GMT
+*  expire date: Apr 18 23:59:59 2021 GMT
+*  subjectAltName: host "viacep.com.br" matched cert's "viacep.com.br"
+*  issuer: C=GB; ST=Greater Manchester; L=Salford; O=Sectigo Limited; CN=Sectigo RSA Domain Validation Secure Server CA
+*  SSL certificate verify ok.
+```
 
 ### Certificate info
 
