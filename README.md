@@ -49,6 +49,14 @@ curl: (51) SSL: certificate subject name 'some.company.wow' does not match targe
 
 ### CN - Common Name
 
+> The certificate is valid only if the request hostname matches the certificate common name
+
+One of the validations is made checking the __hostname__ from the URL with the __common name/CN__ from server certificate.
+
+If you are accessing: http://himate.com/good?no=good
+
+The remote certificate must have in the CN: himate.com 
+
 More info about the `Common Name` field
 
 > https://support.dnsimple.com/articles/what-is-common-name/
